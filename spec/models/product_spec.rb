@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
-  subject(:product) { described_class.new account: Account.new }
+  subject(:product) { described_class.new user: User.new }
 
   describe '#valid?' do
     it { is_expected.to be_valid }

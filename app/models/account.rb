@@ -1,5 +1,7 @@
 class Account < ApplicationRecord
-  has_many :products
+  belongs_to :user
+
+  has_many :listings
 
   validates :login, presence: true
 end
