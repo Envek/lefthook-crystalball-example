@@ -35,6 +35,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.8'
   gem 'rubocop'
   gem 'rubocop-rspec'
+
+  gem 'crystalball', git: 'https://github.com/toptal/crystalball.git' # See https://github.com/toptal/crystalball/pull/107
 end
 
 group :development do
