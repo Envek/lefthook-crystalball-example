@@ -9,6 +9,11 @@ pre-push:
       run: bundle exec crystalball --fail-fast
 
 post-checkout:
+  piped: true
   scripts:
-    crystalball-update:
+    01-bundle-checkinstall:
+      tags: backend
+    02-db-migrate:
+      tags: backend
+    03-crystalball-update:
       tags: rspec backend
