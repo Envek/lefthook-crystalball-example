@@ -7,3 +7,8 @@ pre-push:
     rspec:
       tags: rspec backend
       run: bundle exec crystalball --fail-fast
+
+post-checkout:
+  scripts:
+    crystalball-update:
+      tags: rspec backend
