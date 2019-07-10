@@ -9,7 +9,7 @@ Please read “[Lefthook, Crystalball, and git magic for smooth development expe
 
 ## Installation
 
- 0. Ensure that you have Ruby 2.6.3 installed
+ 0. Ensure that you have Ruby 2.6.3 and SQLite installed (with development libraries)
 
  1. Fork and clone this repository locally:
 
@@ -17,23 +17,46 @@ Please read “[Lefthook, Crystalball, and git magic for smooth development expe
     git clone https://github.com/[YOUR-NAME]/lefthook-crystalball-example
     ```
 
- 2. Install lefthook from Rubygems explicitly:
+ 2. Go to directory with it:
+
+    ```sh
+    cd lefthook-crystalball-example
+    ```
+
+ 3. Install lefthook from Rubygems explicitly:
 
     ```sh
     gem install lefthook
     ```
 
- 3. Install other gems:
+ 4. Install missing hooks to your local `.git/hooks/` directory:
+
+    ```sh
+    lefthook install
+    ```
+
+    Every developer need to do this only once. After that [Lefthook] will sync hooks after changes in `lefthook.yml` automatically.
+
+ 5. Install other dependencies:
 
     ```sh
     bundle install
+    yarn install --check-files
     ```
 
- 4. Prepare database
+ 6. Prepare database
 
      ```sh
-    rails db:prepare
+    rails db:setup
      ```
+
+ 7. Generate code execution maps for [Crystalball]:
+
+    ```sh
+    CRYSTALBALL=true bundle exec rspec
+    ```
+
+    This need to be done only once too. `post-checkout` hook will run this automatically once a week.
 
 ## Usage
 
