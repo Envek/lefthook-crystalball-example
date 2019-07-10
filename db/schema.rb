@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_09_184215) do
+ActiveRecord::Schema.define(version: 2019_07_10_084107) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "login", null: false
@@ -28,10 +28,18 @@ ActiveRecord::Schema.define(version: 2019_07_09_184215) do
     t.index ["product_id"], name: "index_listings_on_product_id"
   end
 
+  create_table "product_variations", force: :cascade do |t|
+    t.integer "product_id"
+    t.decimal "price"
+    t.integer "quantity"
+    t.string "specifics"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_product_variations_on_product_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "title"
-    t.integer "quantity"
-    t.decimal "price"
     t.integer "account_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -39,5 +47,6 @@ ActiveRecord::Schema.define(version: 2019_07_09_184215) do
   end
 
   add_foreign_key "listings", "products"
+  add_foreign_key "product_variations", "products", on_update: :cascade, on_delete: :cascade
   add_foreign_key "products", "accounts"
 end
