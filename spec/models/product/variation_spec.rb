@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Product::Variation, type: :model do
-  subject(:variation) do
-    described_class.new product: Product.new(account: Account.new)
-  end
+  subject(:variation) { build :product_variation }
 
   describe '#valid?' do
     it { is_expected.to be_valid }

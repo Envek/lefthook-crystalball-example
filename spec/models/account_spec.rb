@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Account, type: :model do
-  subject(:account) { described_class.new login: 'itsme' }
+  subject(:account) { build :account }
 
   describe '#valid?' do
     it { is_expected.to be_valid }
