@@ -69,7 +69,7 @@ Please read “[Lefthook, Crystalball, and git magic for smooth development expe
 
   - You for your attention. Thanks!
 
-[Lefthook, Crystalball, and git magic for smooth development experience]: https://dev.to/evilmartians/lefthook-crystalball-and-git-magic-for-smooth-development-experience-3178 "Learn how to make git hooks to do most routine tasks for you: install gems, migrate the database, run tests, and linters."
+[Lefthook, Crystalball, and git magic for smooth development experience]: https://dev.to/evilmartians/lefthook-crystalball-and-git-magic-for-smooth-development-experience-33mc "Learn how to make git hooks to do most routine tasks for you: install gems, migrate the database, run tests, and linters."
 [Lefthook]: https://github.com/Arkweid/lefthook "Git hooks manager"
 [Crystalball]: https://github.com/toptal/crystalball "Regression Test Selection library for your RSpec test suite"
 [Alexander Abroskin]: https://github.com/Arkweid
