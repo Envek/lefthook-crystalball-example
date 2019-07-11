@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_09_184215) do
+ActiveRecord::Schema.define(version: 2019_07_09_184448) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "login", null: false
     t.string "email", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
     t.index ["login"], name: "index_accounts_on_login", unique: true
+    t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
   create_table "listings", force: :cascade do |t|
@@ -25,6 +27,8 @@ ActiveRecord::Schema.define(version: 2019_07_09_184215) do
     t.integer "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "account_id"
+    t.index ["account_id"], name: "index_listings_on_account_id"
     t.index ["product_id"], name: "index_listings_on_product_id"
   end
 
@@ -32,12 +36,20 @@ ActiveRecord::Schema.define(version: 2019_07_09_184215) do
     t.string "title"
     t.integer "quantity"
     t.decimal "price"
-    t.integer "account_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["account_id"], name: "index_products_on_account_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "accounts", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "listings", "accounts", on_update: :cascade, on_delete: :cascade
   add_foreign_key "listings", "products"
-  add_foreign_key "products", "accounts"
+  add_foreign_key "products", "users", on_update: :cascade, on_delete: :cascade
 end
