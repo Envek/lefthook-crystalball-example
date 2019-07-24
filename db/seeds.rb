@@ -8,12 +8,10 @@
 
 account = Account.find_or_create_by!(login: 'vasya') { |a| a.email = 'vasilii@pupkin.net' }
 
-p1 = account.products.find_or_create_by!(title: 'Cookies') do |p|
-  p.attributes = { price: 4.2, quantity: 10 }
-end
-p2 = account.products.find_or_create_by!(title: 'Coffee') do |p|
-  p.attributes = { price: 2.5, quantity: 20 }
-end
-
+p1 = account.products.find_or_create_by!(title: 'Cookies')
+p1.variations.first_or_create! { |v| v.attributes = { price: 4.2, quantity: 10 } }
 p1.listings.first_or_create!
+
+p2 = account.products.find_or_create_by!(title: 'Coffee')
+p2.variations.first_or_create! { |v| v.attributes = { price: 2.5, quantity: 20 } }
 p2.listings.first_or_create!
